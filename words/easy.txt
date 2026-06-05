@@ -1,0 +1,10 @@
+apple
+house
+chair
+pizza
+water
+phone
+green
+light
+bread
+table

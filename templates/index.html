@@ -1,0 +1,272 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Hangman AI Game</title>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet"
+    >
+
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='style.css') }}"
+    >
+
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="header">
+
+        <h1>
+            🎯 Hangman AI
+        </h1>
+
+        <p>
+            Test your vocabulary against an AI-powered Hangman system
+        </p>
+
+    </div>
+
+    <select id="difficulty">
+
+        <option value="easy">
+            Easy
+        </option>
+
+        <option value="medium">
+            Medium
+        </option>
+
+        <option value="hard">
+            Hard
+        </option>
+
+        <option value="impossible">
+            Impossible
+        </option>
+
+    </select>
+
+    <svg
+        width="200"
+        height="250"
+        id="hangman-svg"
+    >
+
+        <line
+            x1="40"
+            y1="230"
+            x2="140"
+            y2="230"
+            stroke="white"
+            stroke-width="4"
+        />
+
+        <line
+            x1="90"
+            y1="230"
+            x2="90"
+            y2="40"
+            stroke="white"
+            stroke-width="4"
+        />
+
+        <line
+            x1="90"
+            y1="40"
+            x2="170"
+            y2="40"
+            stroke="white"
+            stroke-width="4"
+        />
+
+        <line
+            x1="170"
+            y1="40"
+            x2="170"
+            y2="70"
+            stroke="white"
+            stroke-width="4"
+        />
+
+        <circle
+            id="head"
+            cx="170"
+            cy="90"
+            r="20"
+            stroke="white"
+            fill="none"
+            stroke-width="4"
+            style="display:none"
+        />
+
+        <line
+            id="body"
+            x1="170"
+            y1="110"
+            x2="170"
+            y2="160"
+            stroke="white"
+            stroke-width="4"
+            style="display:none"
+        />
+
+        <line
+            id="left-arm"
+            x1="170"
+            y1="125"
+            x2="140"
+            y2="145"
+            stroke="white"
+            stroke-width="4"
+            style="display:none"
+        />
+
+        <line
+            id="right-arm"
+            x1="170"
+            y1="125"
+            x2="200"
+            y2="145"
+            stroke="white"
+            stroke-width="4"
+            style="display:none"
+        />
+
+        <line
+            id="left-leg"
+            x1="170"
+            y1="160"
+            x2="145"
+            y2="195"
+            stroke="white"
+            stroke-width="4"
+            style="display:none"
+        />
+
+        <line
+            id="right-leg"
+            x1="170"
+            y1="160"
+            x2="195"
+            y2="195"
+            stroke="white"
+            stroke-width="4"
+            style="display:none"
+        />
+
+    </svg>
+
+    <div id="word">
+        _ _ _ _ _
+    </div>
+
+    <div class="input-area">
+
+        <div id="keyboard"></div>
+
+        <button
+            id="ai-btn"
+            onclick="aiGuess()"
+        >
+            AI Guess
+        </button>
+
+        <button
+            id="hint-btn"
+            onclick="getHint()"
+        >
+            Hint
+        </button>
+
+        <button onclick="startGame()">
+            Restart Game
+        </button>
+
+    </div>
+
+    <div id="tries">
+        Tries Left: 6
+    </div>
+
+    <div class="stats">
+
+        <div class="stat-box">
+
+            <h3 id="score">
+                0
+            </h3>
+
+            <p>
+                Score
+            </p>
+
+        </div>
+
+        <div class="stat-box">
+
+            <h3 id="streak">
+                0
+            </h3>
+
+            <p>
+                Win Streak
+            </p>
+
+        </div>
+
+        <div class="stat-box">
+
+            <h3 id="wins">
+                0
+            </h3>
+
+            <p>
+                Wins
+            </p>
+
+        </div>
+
+        <div class="stat-box">
+
+            <h3 id="losses">
+                0
+            </h3>
+
+            <p>
+                Losses
+            </p>
+
+        </div>
+
+    </div>
+
+    <div id="message"></div>
+
+    <div id="guessed">
+        Guessed Letters:
+    </div>
+
+</div>
+
+<script
+    src="{{ url_for('static', filename='script.js') }}"
+></script>
+
+</body>
+</html>
+

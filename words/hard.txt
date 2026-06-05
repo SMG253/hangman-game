@@ -1,0 +1,6 @@
+architecture
+abstraction
+encyclopedia
+mathematics
+programming
+artificial
